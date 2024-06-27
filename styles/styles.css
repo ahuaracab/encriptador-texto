@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --color-primario: #F3F5FC;
+    --color-secundario: #FFFFFF;
+
+    --color-terciario: #0A3871;
+    --color-no-encontrado: #343A40;
+    --color-respuesta: #495057;
+    --color-boton-desencriptar: #D8DFE8;
+
+    --fuente-inter: "Inter", sans-serif;
+
+    /*texto - regular 32 = 2rem*/
+    /*respuesta no encontrado - regular 24 = 1.5rem*/
+    /*respuesta ingresar texto - regular 16 = 1rem*/
+    /*respuesta - regular 24 = 1.5rem*/
+    /*aviso mayusculas - regular 12 = 0,75rem*/
+    /*texto botones - regular 16 = 1rem*/
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: var(--color-primario);
+    font-family: var(--fuente-inter);
+}
+
+.encriptador {
+    padding: 2% 5% 2% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.encriptador__solicitud {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+    gap: 80px;
+    box-sizing: border-box;
+}
+
+.encriptador__logo__container {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.encriptador__solicitud__texto {
+    resize: none;
+    border: none;
+    background-color: var(--color-primario);
+    color: var(--color-terciario);
+    font-size: 2rem;
+}
+
+.encriptador__solicitud__texto__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0% 1% 0% 25%;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.encriptador__solicitud__texto::placeholder {
+    color: var(--color-terciario);
+}
+
+.encriptador__solicitud__texto:focus {
+    outline: none;
+}
+
+.encriptador__solicitud__aviso {
+    color: var(--color-respuesta);
+    font-size: 0.75rem;
+    display: flex;
+    gap: 5px;
+}
+
+.encriptador__solicitud__acciones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.encriptador__solicitud__acciones__encriptar {
+    color: var(--color-secundario);
+    width: 20rem;
+    padding: 25px 0;
+    background-color: var(--color-terciario);
+    border: 0.5px solid var(--color-terciario);
+    border-radius: 24px;
+}
+
+.encriptador__solicitud__acciones__desencriptar {
+    color: var(--color-terciario);
+    width: 20rem;
+    padding: 10px 0;
+    background-color: var(--color-boton-desencriptar);
+    border: 0.5px solid var(--color-terciario);
+    border-radius: 24px;
+}
+
+.encriptador__solicitud__acciones__encriptar:hover {
+    cursor: pointer;
+}
+
+.encriptador__solicitud__acciones__desencriptar:hover {
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.encriptador__respuesta {
+    background-color: var(--color-secundario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    box-sizing: border-box;
+    width: 25%;
+    border-radius: 5%;
+    box-shadow: 0 10px 10px hsl(0, 2%, 89%);
+}
+
+.encriptador__respuesta__container {
+    padding: 25% 0%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+}
+
+.encriptador__respuesta__muneco {
+    width: 100%;
+}
+
+.encriptador__respuesta__avisos {
+    background-color: var(--color-secundario);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    width: 75%;
+}
+
+.encriptador__respuesta__no__encontrado {
+    color: var(--color-no-encontrado);
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 100%;
+}
+
+.encriptador__respuesta__ingresar__texto {
+    color: var(--color-respuesta);
+    font-size: 1rem;
+    width: 100%;
+}
