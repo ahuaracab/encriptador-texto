@@ -75,7 +75,7 @@ function copiar() {
 
 function validarTexto() {
     let texto = document.getElementById('solicitud_texto').value;
-    let regex = /^$|^[a-z]+$/;
+    let regex = /^[a-zñÑ\s]+$/;
     let esValido = regex.test(texto);
     if (!esValido) {
         document.getElementById("error-texto").textContent = "Solo se permiten letras minúsculas y sin acentos.";
