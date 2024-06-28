@@ -16,22 +16,23 @@
                 <img class="encriptador__logo" src="assets/logo.png" alt="Logo de Alura">
             </div>
             <div class="encriptador__solicitud__texto__container">
-                <textarea rows="10" class="encriptador__solicitud__texto"
-                    placeholder="Ingrese el texto aquí"></textarea>
-
+                <textarea id="solicitud_texto" rows="8" class="encriptador__solicitud__texto"
+                    placeholder="Ingrese el texto aquí" oninput="validarTexto()"></textarea>
+                <p class="error-message" id="error-texto"></p>
                 <p class="encriptador__solicitud__aviso"><img src="assets/exclamation.svg"
                         alt="Icono de exclamación">Solo letras minúsculas
                     y sin acentos</p>
                 <div class="encriptador__solicitud__acciones">
-                    <button href="" class="encriptador__solicitud__acciones__encriptar">Encriptar</button>
-                    <button href="" class="encriptador__solicitud__acciones__desencriptar">Desencriptar</button>
+                    <button id="encriptar" class="encriptador__solicitud__acciones__encriptar"
+                        onclick="encriptar();">Encriptar</button>
+                    <button id="desencriptar" class="encriptador__solicitud__acciones__desencriptar"
+                        onclick="desencriptar();">Desencriptar</button>
                 </div>
             </div>
-
         </section>
 
         <section class="encriptador__respuesta">
-            <div class="encriptador__respuesta__container">
+            <div id="encriptador__respuesta__container" class="encriptador__respuesta__container">
                 <img class="encriptador__respuesta__muneco" src="assets/muneco.png" alt="Foto de Muñeco">
                 <div class="encriptador__respuesta__avisos">
                     <p class="encriptador__respuesta__no__encontrado">Ningún mensaje fue encontrado</p>
@@ -40,8 +41,36 @@
                     </p>
                 </div>
             </div>
+            <div id="encriptador__respuesta__container__hidden" class="encriptador__respuesta__container__hidden">
+                <textarea id="respuesta_texto" rows="8" class="encriptador__respuesta__texto"></textarea>
+                <div class="encriptador__respuesta__acciones">
+                    <button id="copiar" class="encriptador__solicitud__acciones__copiar"
+                        onclick="copiar();">Copiar</button>
+                </div>
+
+            </div>
         </section>
     </main>
+    <footer class="footer">
+        <span class="derechos">
+            <p>
+                ©Copyright 2024 - Angelo Huaraca. Todos los derechos reservados.
+            </p>
+        </span>
+
+        <span class="enlaces">
+            <p class="enlaces__titulo"> Sígueme en: </p>
+            <div>
+                <a target="_blank" href="https://www.linkedin.com/in/ahuaracab"><img class="enlaces__logos"
+                        alt="Ícono de LinkedIn" src="assets/linkedin.png"></a>
+                <a target="_blank" href="https://github.com/ahuaracab"><img class="enlaces__logos" alt="Ícono de GitHub"
+                        src="assets/github.png"></a>
+                <a target="_blank" href="https://x.com/QAmaniaTIC"><img class="enlaces__logos" alt="Ícono de Twitter"
+                        src="assets/twitter-novo.png"></a>
+            </div>
+        </span>
+    </footer>
+    <script src="app.js"></script>
 </body>
 
 </html>
