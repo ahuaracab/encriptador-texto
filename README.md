@@ -76,7 +76,7 @@ Click derecho a index.html y seleccionar Open with Live Server
 
 ## Autores ✒️
 
-- **Angelo Huaraca** - _Web Developer Software_ - [ahuaracab](https://github.com/ahuaracab)
+- **Angelo Huaraca** - _Web Developer_ - [ahuaracab](https://github.com/ahuaracab)
 
 ## Licencia 📄
 
