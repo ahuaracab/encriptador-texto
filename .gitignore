@@ -1,0 +1,12 @@
+# Ignorar archivos generados automáticamente
+node_modules/
+dist/
+build/
+
+# Ignorar archivos de configuración local
+.vscode/
+.idea/
+
+# Ignorar archivos de dependencias específicas
+package-lock.json
+yarn.lock
