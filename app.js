@@ -1,89 +1,159 @@
+let encriptarBtn = document.getElementById("encriptar");
+let desencriptarBtn = document.getElementById("desencriptar");
+let copiarBtn = document.getElementById("copiar");
+
+let solicitudTexto = document.getElementById("encriptador__solicitud__texto");
+let respuestaTexto = document.getElementById("encriptador__respuesta__texto");
+let solicitudAviso = document.getElementById("encriptador__solicitud__aviso");
+
+let respuestaVaciaContainer = document.getElementById("encriptador__respuesta__vacia__container");
+let respuestaTextoContainer = document.getElementById("encriptador__respuesta__texto__container");
+
+let patronEncriptar = {
+    'a': 'ai',
+    'e': 'enter',
+    'i': 'imes',
+    'o': 'ober',
+    'u': 'ufat'
+};
+
+let patronDesencriptar = {
+    'ai': 'a',
+    'enter': 'e',
+    'imes': 'i',
+    'ober': 'o',
+    'ufat': 'u'
+};
+
 function encriptar() {
-    let solicitudTexto = document.getElementById("solicitud_texto").value;
-    let encriptado = "";
+    let texto = solicitudTexto.value;
+    console.log(texto)
+    let textoEncriptado = "";
+    let patron = patronEncriptar;
 
-    let patron = {
-        'a': 'ai',
-        'e': 'enter',
-        'i': 'imes',
-        'o': 'ober',
-        'u': 'ufat'
-    };
-
-    for (let letra of solicitudTexto) {
-        encriptado += patron[letra] || letra;
+    for (let letra of texto) {
+        textoEncriptado += patron[letra] || letra;
     }
 
-    document.getElementById("encriptador__respuesta__container").style.display = "none";
-    document.getElementById("encriptador__respuesta__container__hidden").style.display = "flex";
-    document.getElementById("respuesta_texto").textContent = encriptado;
-    document.getElementById("solicitud_texto").value = "";
+    textoEncriptado = textoEncriptado.trim();
+    respuestaTexto.textContent = textoEncriptado;
+    solicitudTexto.value = "";
+    cambiarPlaceholderEncriptar();
+    evaluarTextoEncriptado(textoEncriptado);
 }
 
 function desencriptar() {
-    let solicitudTexto = document.getElementById("solicitud_texto").value;
-    let desencriptado = "";
-
-    let patron = {
-        'ai': 'a',
-        'enter': 'e',
-        'imes': 'i',
-        'ober': 'o',
-        'ufat': 'u'
-    };
-
+    let texto = solicitudTexto.value;
+    let textoDesencriptado = "";
+    let patron = patronDesencriptar;
     let min = Infinity;
     let max = 0;
+    let inicio = 0;
 
     for (let key in patron) {
         min = Math.min(min, key.length);
         max = Math.max(max, key.length);
     }
 
-    let i = 0;
-
-    while (i < solicitudTexto.length) {
+    while (inicio < texto.length) {
         let encontrado = false;
 
-        for (let j = max; j >= min; j--) {
-            let subcadena = solicitudTexto.substring(i, i + j);
+        for (let fin = max; fin >= min; fin--) {
+            let subcadena = texto.substring(inicio, inicio + fin);
 
-            if (patron.hasOwnProperty(subcadena)) {
-                desencriptado += patron[subcadena];
-                i += j;
+            if (patron[subcadena]) {
+                textoDesencriptado += patron[subcadena];
+                inicio += fin;
                 encontrado = true;
                 break;
             }
         }
 
         if (!encontrado) {
-            desencriptado += solicitudTexto[i];
-            i++;
+            textoDesencriptado += texto[inicio];
+            inicio++;
         }
     }
-
-    document.getElementById("encriptador__respuesta__container").style.display = "none";
-    document.getElementById("encriptador__respuesta__container__hidden").style.display = "flex";
-    document.getElementById("respuesta_texto").textContent = desencriptado;
-    document.getElementById("solicitud_texto").value = "";
+    textoDesencriptado = textoDesencriptado.trim();
+    respuestaTexto.textContent = textoDesencriptado;
+    solicitudTexto.value = "";
+    cambiarPlaceholderDesencriptar();
+    evaluarTextoEncriptado(textoDesencriptado);
 }
 
 function copiar() {
-    let texto = document.getElementById('respuesta_texto').innerHTML;
+    let texto = respuestaTexto.innerHTML;
     navigator.clipboard.writeText(texto);
+    copiarBtn.textContent = "Copiado!";
+    setTimeout(function () {
+        copiarBtn.textContent = "Copiar";
+    }, 3000);
+    setTimeout(function () {
+        mostrarPanel();
+    }, 3000);
 }
 
 function validarTexto() {
-    let texto = document.getElementById('solicitud_texto').value;
-    let regex = /^[a-zñÑ\s]+$/;
+    let texto = solicitudTexto.value;
+    let regex = /^[a-zñÑ\s]*$/;
+    ///el regex me debe aceptar vacio
     let esValido = regex.test(texto);
+
     if (!esValido) {
-        document.getElementById("error-texto").textContent = "Solo se permiten letras minúsculas y sin acentos.";
-        document.getElementById("encriptar").disabled = true;
-        document.getElementById("desencriptar").disabled = true;
+        resaltarError();
+        deshabilitarBotones();
     } else {
-        document.getElementById("error-texto").textContent = "";
-        document.getElementById("encriptar").disabled = false;
-        document.getElementById("desencriptar").disabled = false;
+        noResaltarError();
+        habilitarBotones();
+    }
+}
+
+function mostrarPanel() {
+    respuestaVaciaContainer.style.display = "flex";
+    respuestaTextoContainer.style.display = "none";
+}
+
+function ocultarPanel() {
+    respuestaVaciaContainer.style.display = "none";
+    respuestaTextoContainer.style.display = "flex";
+}
+
+function habilitarBotones() {
+    encriptarBtn.disabled = false;
+    desencriptarBtn.disabled = false;
+}
+
+function deshabilitarBotones() {
+    encriptarBtn.disabled = true;
+    desencriptarBtn.disabled = true;
+}
+
+function resaltarError() {
+    solicitudAviso.classList.add("error__message");
+}
+
+function noResaltarError() {
+    solicitudAviso.classList.remove("error__message");
+}
+
+function cambiarPlaceholderEncriptar() {
+    solicitudTexto.placeholder = "Se encriptó el texto!!!";
+    setTimeout(function () {
+        solicitudTexto.placeholder = "Ingrese texto aquí";
+    }, 2000);
+}
+
+function cambiarPlaceholderDesencriptar() {
+    solicitudTexto.placeholder = "Se desencriptó el texto!!!";
+    setTimeout(function () {
+        solicitudTexto.placeholder = "Ingrese texto aquí";
+    }, 2000);
+}
+
+function evaluarTextoEncriptado(texto) {
+    if (texto !== "") {
+        ocultarPanel();
+    } else {
+        mostrarPanel();
     }
 }

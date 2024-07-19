@@ -10,17 +10,15 @@
 
 <body>
     <main class="encriptador">
-
         <section class="encriptador__solicitud">
             <div class="encriptador__logo__container">
                 <img class="encriptador__logo" src="assets/logo.png" alt="Logo de Alura">
             </div>
             <div class="encriptador__solicitud__texto__container">
-                <textarea id="solicitud_texto" rows="8" class="encriptador__solicitud__texto"
+                <textarea id="encriptador__solicitud__texto" rows="8" class="encriptador__solicitud__texto"
                     placeholder="Ingrese el texto aquí" oninput="validarTexto()"></textarea>
-                <p class="error-message" id="error-texto"></p>
-                <p class="encriptador__solicitud__aviso"><img src="assets/exclamation.svg"
-                        alt="Icono de exclamación">Solo letras minúsculas
+                <p id="encriptador__solicitud__aviso" class="encriptador__solicitud__aviso"><img
+                        src="assets/exclamation.svg" alt="Icono de exclamación">Solo letras minúsculas
                     y sin acentos</p>
                 <div class="encriptador__solicitud__acciones">
                     <button id="encriptar" class="encriptador__solicitud__acciones__encriptar"
@@ -30,9 +28,8 @@
                 </div>
             </div>
         </section>
-
         <section class="encriptador__respuesta">
-            <div id="encriptador__respuesta__container" class="encriptador__respuesta__container">
+            <div id="encriptador__respuesta__vacia__container" class="encriptador__respuesta__vacia__container">
                 <img class="encriptador__respuesta__muneco" src="assets/muneco.png" alt="Foto de Muñeco">
                 <div class="encriptador__respuesta__avisos">
                     <p class="encriptador__respuesta__no__encontrado">Ningún mensaje fue encontrado</p>
@@ -41,8 +38,8 @@
                     </p>
                 </div>
             </div>
-            <div id="encriptador__respuesta__container__hidden" class="encriptador__respuesta__container__hidden">
-                <textarea id="respuesta_texto" rows="8" class="encriptador__respuesta__texto"></textarea>
+            <div id="encriptador__respuesta__texto__container" class="encriptador__respuesta__texto__container">
+                <textarea id="encriptador__respuesta__texto" rows="8" class="encriptador__respuesta__texto"></textarea>
                 <div class="encriptador__respuesta__acciones">
                     <button id="copiar" class="encriptador__solicitud__acciones__copiar"
                         onclick="copiar();">Copiar</button>
