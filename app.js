@@ -9,6 +9,8 @@ let solicitudAviso = document.getElementById("encriptador__solicitud__aviso");
 let respuestaVaciaContainer = document.getElementById("encriptador__respuesta__vacia__container");
 let respuestaTextoContainer = document.getElementById("encriptador__respuesta__texto__container");
 
+let placeholderInicial = "Ingrese el texto aquí";
+
 let patronEncriptar = {
     'a': 'ai',
     'e': 'enter',
@@ -137,17 +139,28 @@ function noResaltarError() {
 }
 
 function cambiarPlaceholderEncriptar() {
-    solicitudTexto.placeholder = "Se encriptó el texto!!!";
-    setTimeout(function () {
-        solicitudTexto.placeholder = "Ingrese texto aquí";
-    }, 2000);
+    console.log(solicitudTexto.value.trim())
+    console.log(solicitudTexto.value.trim() !== "")
+
+    if (respuestaTexto.value.trim() !== "") {
+        console.log("entra")
+        solicitudTexto.placeholder = "Se encriptó el texto!!!";
+        setTimeout(function () {
+            solicitudTexto.placeholder = placeholderInicial;
+        }, 2000);
+    }
 }
 
 function cambiarPlaceholderDesencriptar() {
-    solicitudTexto.placeholder = "Se desencriptó el texto!!!";
-    setTimeout(function () {
-        solicitudTexto.placeholder = "Ingrese texto aquí";
-    }, 2000);
+    console.log(solicitudTexto.value)
+    console.log(solicitudTexto.value.trim())
+
+    if (respuestaTexto.value.trim() !== "") {
+        solicitudTexto.placeholder = "Se desencriptó el texto!!!";
+        setTimeout(function () {
+            solicitudTexto.placeholder = placeholderInicial;
+        }, 2000);
+    }
 }
 
 function evaluarTextoEncriptado(texto) {
