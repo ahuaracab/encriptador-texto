@@ -1,6 +1,32 @@
 # Encriptador de Texto 🔒
 
-Este proyecto es un encriptador y desencriptador de mensajes. Permite transformar texto en un formato encriptado y luego volver a su forma original. El encriptador utiliza un algoritmo de sustitución simple para ocultar el contenido del mensaje.
+Este proyecto es un encriptador y desencriptador de mensajes. Permite transformar un texto en un formato encriptado y también puede desencriptar el texto a su forma original. El encriptador utiliza un algoritmo de sustitución simple para ocultar el contenido del mensaje, mientras que el desencriptador usa un algoritmo de búsquedas por subcadenas en todo el texto.
+
+## Requisitos principales
+
+1. Patrón de encriptado:
+```
+La letra "e" es convertida para "enter"
+La letra "i" es convertida para "imes"
+La letra "a" es convertida para "ai"
+La letra "o" es convertida para "ober"
+La letra "u" es convertida para "ufat"
+```
+2. El desencriptado es de modo inverso al patrón de encriptado.
+3. No debe funcionar solo con letras mayúsculas.
+1. No deben funcionar con letras con acentos o caracteres especiales.
+1. Debe ser posible convertir un texto a la versión encriptada y también devolver el texto encriptado a su versión original.
+1. Debe existir un campo para la
+inserción del texto que será encriptado/desencriptado, y el usuario debe poder escoger entre las dos opciones.
+1. Debe existir un campo para mostrar el resultado del texto encriptado/desencriptado.
+1. Debe existir un botón de encriptado y un botón de desencriptado.
+1. Debe existir un botón que copie el texto encriptado/desencriptado en el portapapeles, es decir, que tenga la misma funcionalidad del ```Ctrl+C```.
+
+## Ejemplo
+```
+gato => gaitober
+gaitober" => gato
+```
 
 ## Características Principales 🎬
 
