@@ -29,7 +29,6 @@ let patronDesencriptar = {
 
 function encriptar() {
     let texto = solicitudTexto.value;
-    console.log(texto)
     let textoEncriptado = "";
     let patron = patronEncriptar;
 
@@ -139,11 +138,7 @@ function noResaltarError() {
 }
 
 function cambiarPlaceholderEncriptar() {
-    console.log(solicitudTexto.value.trim())
-    console.log(solicitudTexto.value.trim() !== "")
-
     if (respuestaTexto.value.trim() !== "") {
-        console.log("entra")
         solicitudTexto.placeholder = "Se encriptó el texto!!!";
         setTimeout(function () {
             solicitudTexto.placeholder = placeholderInicial;
@@ -152,9 +147,6 @@ function cambiarPlaceholderEncriptar() {
 }
 
 function cambiarPlaceholderDesencriptar() {
-    console.log(solicitudTexto.value)
-    console.log(solicitudTexto.value.trim())
-
     if (respuestaTexto.value.trim() !== "") {
         solicitudTexto.placeholder = "Se desencriptó el texto!!!";
         setTimeout(function () {
